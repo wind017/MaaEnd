@@ -307,9 +307,9 @@ func (a *SeizeDeliveryJobsDepartureAction) clickTracking(ctx *maa.Context, scree
 
 func (a *SeizeDeliveryJobsDepartureAction) runGoal(ctx *maa.Context, arg *maa.CustomActionArg, mapName string, target [2]float64) bool {
 	paramBytes, err := json.Marshal(map[string]any{
-		"map_name":        mapName,
-		"target":          target,
-		"zipline_policy":  maptrackerdefault.ZIPLINE_POLICY_LAZY,
+		"map_name":         mapName,
+		"target":           target,
+		"zipline_policy":   maptrackerdefault.ZIPLINE_POLICY_LAZY,
 		"stuck_mitigators": []string{"MoveOrDeleteDevice"},
 	})
 	if err != nil {

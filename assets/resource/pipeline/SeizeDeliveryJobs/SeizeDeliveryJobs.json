@@ -2,10 +2,10 @@
     "SeizeDeliveryJobsMain": {
         "desc": "抢委托送货任务的主入口",
         "pre_delay": 0,
-        "post_delay": 0,
         "anchor": {
             "SeizeDeliveryJobsAfterEnterWulingJobList": "SeizeDeliveryJobsReadyToSeize"
         },
+        "post_delay": 0,
         "next": [
             "SeizeDeliveryJobsGuard",
             "SeizeDeliveryJobsEnterWulingJobList"
@@ -62,13 +62,13 @@
     "SeizeDeliveryJobsFailedChanceExhausted": {
         "desc": "无法开始抢单，因为今天的运送委托已满，任务结束",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/DepotNodePage/JobExhausted.png",
         "roi": [
             940,
             600,
             160,
             110
         ],
+        "template": "SeizeDeliveryJobs/DepotNodePage/JobExhausted.png",
         "order_by": "Score",
         "next": [
             // 视作任务结束
@@ -81,27 +81,27 @@
     "__SeizeDeliveryJobsRecoFilterWuling": {
         "desc": "寻找武陵筛选标志（仅识别）",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/DepotNodePage/FilterWuling.png",
         "roi": [
             20,
             440,
             140,
             260
         ],
+        "template": "SeizeDeliveryJobs/DepotNodePage/FilterWuling.png",
         "order_by": "Score"
     },
     "__SeizeDeliveryJobsRecoFilterNonWuling": {
         "desc": "寻找非武陵筛选标志（仅识别）",
         "recognition": "TemplateMatch",
-        "template": [
-            "SeizeDeliveryJobs/DepotNodePage/FilterAll.png",
-            "SeizeDeliveryJobs/DepotNodePage/FilterValleyIV.png"
-        ],
         "roi": [
             20,
             440,
             140,
             260
+        ],
+        "template": [
+            "SeizeDeliveryJobs/DepotNodePage/FilterAll.png",
+            "SeizeDeliveryJobs/DepotNodePage/FilterValleyIV.png"
         ],
         "order_by": "Score"
     },
@@ -258,10 +258,10 @@
                 103
             ]
         },
+        "timeout": 5000, // 断言能在短时间内弹出接取成功动画
         "next": [
             "SeizeDeliveryJobsIsSeizeSuccess"
         ],
-        "timeout": 5000, // 断言能在短时间内弹出接取成功动画
         "on_error": [
             // 没弹出接取动画，意味着该委托已失效，需重新抢单
             "SeizeDeliveryJobsRefresh"
@@ -273,13 +273,13 @@
     "SeizeDeliveryJobsIsSeizeSuccess": {
         "desc": "点击接取委托后，检查是否接取成功",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/DepotNodePage/JobSeized.png",
         "roi": [
             760,
             550,
             230,
             160
         ],
+        "template": "SeizeDeliveryJobs/DepotNodePage/JobSeized.png",
         "order_by": "Score",
         "pre_wait_freezes": 1000, // 等待接取动画结束
         "action": "Click",
@@ -292,15 +292,15 @@
     "SeizeDeliveryJobsRefresh": {
         "desc": "对委托列表执行刷新操作",
         "recognition": "TemplateMatch",
-        "template": [
-            "SeizeDeliveryJobs/DepotNodePage/JobRefresh.png",
-            "SeizeDeliveryJobs/DepotNodePage/JobRefreshHover.png"
-        ],
         "roi": [
             1160,
             600,
             110,
             110
+        ],
+        "template": [
+            "SeizeDeliveryJobs/DepotNodePage/JobRefresh.png",
+            "SeizeDeliveryJobs/DepotNodePage/JobRefreshHover.png"
         ],
         "order_by": "Score",
         "action": "Click",

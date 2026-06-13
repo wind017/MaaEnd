@@ -11,17 +11,17 @@
     "MapTrackerBigMap_FilterNone": {
         "desc": "在大地图界面，确保不显示任何图标",
         "pre_delay": 0,
-        "post_delay": 0,
-        "next": [
-            "__MapTrackerBigMap_OpenFiltersDialog",
-            "__MapTrackerBigMap_InFiltersDialog"
-        ],
-        "timeout": 5000,
         "anchor": {
             "MapTrackerAfterOpenFiltersDialog": "__MapTrackerBigMap_InFiltersDialog",
             "MapTrackerAfterInFiltersDialog": "__MapTrackerBigMap_ClearFilters",
             "MapTrackerAfterClearFilters": "__MapTrackerBigMap_CloseFilterDialog"
-        }
+        },
+        "post_delay": 0,
+        "timeout": 5000,
+        "next": [
+            "__MapTrackerBigMap_OpenFiltersDialog",
+            "__MapTrackerBigMap_InFiltersDialog"
+        ]
     },
     "MapTrackerBigMap_FilterOnlyZipline": {
         "desc": "在大地图界面，确保仅显示滑索架图标",

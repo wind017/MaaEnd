@@ -173,7 +173,10 @@ MapNavigator 负责的是“**已知目标路径后，稳定把人带过去**”
 ```json
 {
     "action": "NAVMESH",
-    "target": [81.77, 108.72],
+    "target": [
+        81.77,
+        108.72
+    ],
     "target_tier": "ValleyIV_L1_171"
 }
 ```

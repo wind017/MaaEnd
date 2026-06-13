@@ -3,10 +3,10 @@
         "desc": "抢单成功后或手上已经有单的后处理入口（此节点默认关闭）",
         "enabled": false,
         "pre_delay": 0,
-        "post_delay": 0,
         "anchor": {
             "SeizeDeliveryJobsAfterEnterDestinationMap": "SeizeDeliveryJobsWhereIsTheDestination"
         },
+        "post_delay": 0,
         "next": [
             "SeizeDeliveryJobsEnterDestinationMap"
         ],
@@ -18,11 +18,11 @@
         "desc": "在目的地地图界面，开始判断任务所在的地区",
         "pre_delay": 0,
         "post_delay": 0,
+        "timeout": 5000, // 断言在短时间内可以命中任一 next
         "next": [
             "SeizeDeliveryJobsWillGoToWulingCity",
             "SeizeDeliveryJobsWillGoToTestArea"
         ],
-        "timeout": 5000, // 断言在短时间内可以命中任一 next
         "on_error": [
             "SeizeDeliveryJobsFatalCannotDetermineDestination"
         ]
@@ -47,10 +47,10 @@
             "zoom_value": 0.25
         },
         "pre_delay": 0,
-        "post_delay": 0,
         "anchor": {
             "SeizeDeliveryJobsTeleportPre": "SeizeDeliveryJobsTeleportWulingCity"
         },
+        "post_delay": 0,
         "next": [
             "SeizeDeliveryJobsCheckCarryingGoodsPre"
         ],
@@ -78,10 +78,10 @@
             "zoom_value": 0.25
         },
         "pre_delay": 0,
-        "post_delay": 0,
         "anchor": {
             "SeizeDeliveryJobsTeleportPre": "SeizeDeliveryJobsTeleportTestArea"
         },
+        "post_delay": 0,
         "next": [
             "SeizeDeliveryJobsCheckCarryingGoodsPre"
         ],
@@ -115,13 +115,13 @@
     "SeizeDeliveryJobsIsCarryingGoods": {
         "desc": "发现已携带了货物，不再传送，直接尝试走送货流程",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/CarryingGoods.png",
         "roi": [
             130,
             30,
             170,
             90
         ],
+        "template": "SeizeDeliveryJobs/CarryingGoods.png",
         "green_mask": true,
         "order_by": "Score",
         "next": [
@@ -403,7 +403,7 @@
             "Node.Recognition.Succeeded": "<p style=\"color: #f44\">已经携带了货物，但未开启自动送货</p>"
         }
     },
-     // ===== 其他公共节点 =====
+    // ===== 其他公共节点 =====
     "SeizeDeliveryJobsFatalCannotFetchGoods": {
         "desc": "致命错误，始终未识别到接取货物按钮",
         "pre_delay": 0,

@@ -12,37 +12,37 @@
     "__SeizeDeliveryJobsRecoWulingDepotNode": {
         "desc": "寻找武陵仓储管理页面的特征标志（仅识别）",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/DepotNodePage/InWulingDepotNode.png",
         "roi": [
             970,
             10,
             270,
             180
         ],
+        "template": "SeizeDeliveryJobs/DepotNodePage/InWulingDepotNode.png",
         "order_by": "Score"
     },
     "__SeizeDeliveryJobsRecoJobListActive": {
         "desc": "寻找已激活的运送委托列表标签页（仅识别）",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/DepotNodePage/JobListTabActive.png",
         "roi": [
             170,
             10,
             180,
             180
         ],
+        "template": "SeizeDeliveryJobs/DepotNodePage/JobListTabActive.png",
         "order_by": "Score"
     },
     "__SeizeDeliveryJobsRecoJobList": {
         "desc": "寻找未激活的运送委托列表标签页（仅识别）",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/DepotNodePage/JobListTab.png",
         "roi": [
             170,
             10,
             180,
             180
         ],
+        "template": "SeizeDeliveryJobs/DepotNodePage/JobListTab.png",
         "order_by": "Score"
     },
     "__SeizeDeliveryJobsInWulingDepotNode": {
@@ -80,8 +80,8 @@
             "__SeizeDeliveryJobsRecoJobListActive"
         ],
         "pre_delay": 0,
-        "post_delay": 0,
         "post_wait_freezes": 1000, // 等待列表加载动画结束
+        "post_delay": 0,
         "next": [
             "[Anchor]SeizeDeliveryJobsAfterEnterWulingJobList" // 外部调用者需要覆写此锚点的所指
         ],
@@ -93,10 +93,10 @@
     "SeizeDeliveryJobsEnterDestinationMap": {
         "desc": "从任意位置进入当前送货任务的地图界面",
         "pre_delay": 0,
-        "post_delay": 0,
         "anchor": {
             "SeizeDeliveryJobsAfterEnterWulingJobList": "__SeizeDeliveryJobsReadyToViewCurrentJob"
         },
+        "post_delay": 0,
         "next": [
             "SeizeDeliveryJobsEnterWulingJobList"
         ]
@@ -105,33 +105,33 @@
         "desc": "在运送委托列表，准备查看当前任务详情",
         "pre_delay": 0,
         "post_delay": 0,
+        "timeout": 5000, // 断言在较短时间内可找到当前任务详情（没找到就是没接任务）
         "next": [
             "__SeizeDeliveryJobsViewCurrentJob"
-        ],
-        "timeout": 5000 // 断言在较短时间内可找到当前任务详情（没找到就是没接任务）
+        ]
     },
     "__SeizeDeliveryJobsRecoViewCurrentJob": {
         "desc": "寻找查看当前任务详情按钮（仅识别）",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/DepotNodePage/JobViewButton.png",
         "roi": [
             1170,
             160,
             100,
             210
         ],
+        "template": "SeizeDeliveryJobs/DepotNodePage/JobViewButton.png",
         "order_by": "Score"
     },
     "__SeizeDeliveryJobsViewCurrentJob": {
         "desc": "在运送委托列表，点击查看当前任务详情",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/DepotNodePage/JobViewButton.png",
         "roi": [
             1170,
             160,
             100,
             210
         ], // 由于 And 模式不能正确处理 target_offset，此处直接拷贝原始识别参数
+        "template": "SeizeDeliveryJobs/DepotNodePage/JobViewButton.png",
         // "recognition": "And",
         // "all_of": [
         //     "__SeizeDeliveryJobsRecoViewCurrentJob"
@@ -156,13 +156,13 @@
     "__SeizeDeliveryJobsViewDestinationMap": {
         "desc": "在任务详情页面，点击定位按钮，打开大地图查看目的地",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/TrackTaskButton.png",
         "roi": [
             940,
             580,
             150,
             130
         ],
+        "template": "SeizeDeliveryJobs/TrackTaskButton.png",
         "order_by": "Score",
         "action": "Click",
         "next": [
@@ -176,13 +176,13 @@
         "desc": "在任务详情页面，若没找到定位按钮，此时需要先点击开始追踪任务按钮",
         "max_hit": 5, // 此为回环节点，防死循环
         "recognition": "TemplateMatch",
-        "template": "Common/Button/WhiteConfirmButtonType1.png",
         "roi": [
             1070,
             570,
             200,
             140
         ],
+        "template": "Common/Button/WhiteConfirmButtonType1.png",
         "order_by": "Score",
         "action": "Click",
         "next": [
@@ -196,13 +196,13 @@
     "__SeizeDeliveryJobsInDestinationMap": {
         "desc": "确认已打开目的地地图",
         "recognition": "TemplateMatch",
-        "template": "SeizeDeliveryJobs/TrackTaskSuccess.png",
         "roi": [
             900,
             10,
             130,
             140
         ],
+        "template": "SeizeDeliveryJobs/TrackTaskSuccess.png",
         "pre_delay": 0,
         "post_delay": 0,
         "next": [

@@ -22,10 +22,15 @@
             "SceneAnyEnterWorld"
         ]
     },
-        "TrialOfSwordmancyDailyCheckRewardMode": {
+    "TrialOfSwordmancyDailyCheckRewardMode": {
         "desc": "检测是否处于奖励演算模式",
         "recognition": "TemplateMatch",
-        "roi": [160, 531, 80, 41],
+        "roi": [
+            160,
+            531,
+            80,
+            41
+        ],
         "template": "TrialOfSwordmancy/RewardMode.png",
         "next": [
             "TrialOfSwordmancyAggressiveEntry",

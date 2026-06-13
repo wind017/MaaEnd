@@ -236,10 +236,10 @@
                 103
             ]
         },
+        "timeout": 5000,
         "next": [
             "SeizeDeliveryJobsIsSeizeSuccess"
         ],
-        "timeout": 5000,
         "on_error": [
             "SeizeDeliveryJobsRefresh"
         ]

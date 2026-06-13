@@ -173,7 +173,10 @@ When the destination lives on a **tier (layered sub-map)**, each tier has its **
 ```json
 {
     "action": "NAVMESH",
-    "target": [81.77, 108.72],
+    "target": [
+        81.77,
+        108.72
+    ],
     "target_tier": "ValleyIV_L1_171"
 }
 ```
