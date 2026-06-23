@@ -206,6 +206,9 @@
                 }
             }
         },
+        "anchor": {
+            "AutoEssenceMoveToTriggerPoint": "WLTestAreaMoveToTriggerPoint3"
+        },
         "next": [
             "WLTestAreaMoveToTriggerPointExact"
         ],
